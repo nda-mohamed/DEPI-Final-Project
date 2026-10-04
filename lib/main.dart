@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Ai_Lingo',
+      title: 'AI_Longo',
       //home: ,
     );
   }
