@@ -1,3 +1,4 @@
+import 'package:depi_final_project/ui/home_screen/home_navigator.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AI_Longo',
-      //home: ,
+      home: HomeNavigator(),
     );
   }
 }
