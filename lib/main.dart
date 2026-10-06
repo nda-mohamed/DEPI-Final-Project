@@ -1,4 +1,6 @@
 import 'package:depi_final_project/ui/home_screen/home_navigator.dart';
+import 'package:depi_final_project/ui/onboarding_screen/onboarding_screen.dart';
+import 'package:depi_final_project/ui/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AI_Longo',
-      home: HomeNavigator(),
+      home: SplashScreen(),
     );
   }
 }
