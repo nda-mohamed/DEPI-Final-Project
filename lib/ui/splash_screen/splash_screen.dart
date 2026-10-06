@@ -33,11 +33,11 @@ class _SplashScreenState extends State<SplashScreen>
       duration: const Duration(seconds: 4),
     )..repeat();
 
-    // _navigateToNext();
+    _navigateToNext();
   }
 
   void _navigateToNext() {
-    Future.delayed(const Duration(seconds: 4), () {
+    Future.delayed(const Duration(seconds: 5), () {
       if (mounted) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => OnBoardingScreen()),
