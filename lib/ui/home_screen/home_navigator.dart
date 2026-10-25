@@ -1,5 +1,6 @@
 import 'package:depi_final_project/ui/home_screen/taps/chat_tap/chat_tap.dart';
-import 'package:depi_final_project/ui/home_screen/taps/learn_tap/learn_tap.dart';
+import 'package:depi_final_project/ui/home_screen/taps/learn_tap/learn_screen.dart';
+
 import 'package:depi_final_project/ui/home_screen/taps/profile_tap/profile_tap.dart';
 import 'package:depi_final_project/ui/home_screen/taps/vault_tap/vault_tap.dart';
 import 'package:flutter/material.dart';
@@ -15,12 +16,7 @@ class HomeNavigator extends StatefulWidget {
 class _HomeNavigatorState extends State<HomeNavigator> {
   int currentIndex = 0;
 
-  List<Widget> screens = [
-    LearnTap(),
-    ChatTap(),
-    VaultTap(),
-    ProfileTap(),
-  ];
+  List<Widget> screens = [LearnScreen(), ChatTap(), VaultTap(), ProfileTap()];
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +29,7 @@ class _HomeNavigatorState extends State<HomeNavigator> {
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 15,
-            ),
-          ],
+          boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 15)],
         ),
         child: ClipRRect(
           borderRadius: const BorderRadius.only(
@@ -55,10 +46,22 @@ class _HomeNavigatorState extends State<HomeNavigator> {
             },
             type: BottomNavigationBarType.fixed,
             items: [
-              BottomNavigationBarItem(icon: Icon(Icons.explore_outlined), label: 'Learn'),
-              BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_outline_rounded), label: 'Chat'),
-              BottomNavigationBarItem(icon: Icon(Icons.menu_book_outlined), label: 'Vault'),
-              BottomNavigationBarItem(icon: Icon(Icons.person_outline_rounded), label: 'Profile'),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.explore_outlined),
+                label: 'Learn',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.chat_bubble_outline_rounded),
+                label: 'Chat',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.menu_book_outlined),
+                label: 'Vault',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person_outline_rounded),
+                label: 'Profile',
+              ),
             ],
             selectedItemColor: AppColor.primary,
             unselectedItemColor: AppColor.gray1,
