@@ -1,9 +1,8 @@
 import 'package:depi_final_project/core/widgets/onboarding_page_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../../auth/screens/signup_screen/signup_screen.dart';
 import '../../core/app_color/app_color.dart';
 import '../../core/widgets/onboarding_action_button.dart';
-import '../signup_screen/signup_screen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});

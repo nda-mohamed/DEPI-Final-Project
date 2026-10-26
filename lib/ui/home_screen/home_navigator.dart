@@ -1,3 +1,5 @@
+import 'package:circle_bottom_navigation/circle_bottom_navigation.dart';
+import 'package:circle_bottom_navigation/widgets/tab_data.dart';
 import 'package:depi_final_project/ui/home_screen/taps/chat_tap/chat_tap.dart';
 import 'package:depi_final_project/ui/home_screen/taps/learn_tap/learn_tap.dart';
 import 'package:depi_final_project/ui/home_screen/taps/profile_tap/profile_tap.dart';
@@ -15,57 +17,56 @@ class HomeNavigator extends StatefulWidget {
 class _HomeNavigatorState extends State<HomeNavigator> {
   int currentIndex = 0;
 
-  List<Widget> screens = [
-    LearnTap(),
-    ChatTap(),
-    VaultTap(),
-    ProfileTap(),
+  final List<Widget> screens = [
+    const LearnTap(),
+    const ChatTap(),
+    const VaultTap(),
+    const ProfileTap(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[currentIndex],
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: AppColor.white,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
+      bottomNavigationBar: CircleBottomNavigation(
+        barHeight: 75,
+        initialSelection: currentIndex,
+        barBackgroundColor: AppColor.white,
+        circleColor: AppColor.primary,
+        inactiveIconColor: AppColor.gray1,
+        textColor: AppColor.primary,
+        hasElevationShadows: true,
+        tabs: [
+          TabData(
+            icon: Icons.explore_outlined,
+            iconSize: 26,
+            title: 'Learn',
+            fontWeight: FontWeight.bold,
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 15,
-            ),
-          ],
-        ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
+          TabData(
+            icon: Icons.chat_bubble_outline_rounded,
+            iconSize: 26,
+            title: 'Chat',
+            fontWeight: FontWeight.bold,
           ),
-          child: BottomNavigationBar(
-            backgroundColor: Colors.grey.shade50,
-            currentIndex: currentIndex,
-            onTap: (value) {
-              setState(() {
-                currentIndex = value;
-              });
-            },
-            type: BottomNavigationBarType.fixed,
-            items: [
-              BottomNavigationBarItem(icon: Icon(Icons.explore_outlined), label: 'Learn'),
-              BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_outline_rounded), label: 'Chat'),
-              BottomNavigationBarItem(icon: Icon(Icons.menu_book_outlined), label: 'Vault'),
-              BottomNavigationBarItem(icon: Icon(Icons.person_outline_rounded), label: 'Profile'),
-            ],
-            selectedItemColor: AppColor.primary,
-            unselectedItemColor: AppColor.gray1,
-            selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-            unselectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+          TabData(
+            icon: Icons.menu_book_outlined,
+            iconSize: 26,
+            title: 'Vault',
+            fontWeight: FontWeight.bold,
           ),
-        ),
+          TabData(
+            icon: Icons.person_outline_rounded,
+            iconSize: 26,
+            title: 'Profile',
+            fontWeight: FontWeight.bold,
+          ),
+        ],
+        onTabChangedListener: (index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
       ),
     );
   }

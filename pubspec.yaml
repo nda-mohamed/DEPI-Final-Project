@@ -36,6 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.8
   google_fonts: ^8.1.0
   flutter_native_splash: ^2.4.7
+  circle_bottom_navigation: ^2.0.0
+  firebase_core: ^5.1.0
+  firebase_auth: ^7.0.1
+  flutter_bloc: ^9.1.1
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +67,7 @@ flutter:
     - assets/images/
     - assets/images/onboarding/
     - assets/images/splash_native/
+    - assets/images/auth/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -92,8 +97,8 @@ flutter:
 
 flutter_native_splash:
     color: "#E8542F"
-    image: "assets/images/splash_native/logo.png"
+    image: "assets/images/splash_native/logoo.png"
 
     android_12:
       color: "#E8542F"
-      image: "assets/images/splash_native/logo.png"
+      image: "assets/images/splash_native/logoo.png"
