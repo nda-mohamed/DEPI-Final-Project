@@ -7,7 +7,7 @@ import 'package:depi_final_project/ui/home_screen/taps/vault_tap/widgets/vault_s
 import 'package:depi_final_project/ui/home_screen/taps/vault_tap/widgets/word_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
+
 
 class VocablaryVault extends StatelessWidget {
   const VocablaryVault({super.key});
@@ -62,11 +62,15 @@ class _VaultView extends StatelessWidget {
                   total: state.total,
                   mastered: state.mastered,
                   due: state.due,
-                  onStartReview: () => context.push('/review'),
+                  onStartReview: (){
+                    ////
+                  },
                 ),
                SizedBox(height: 16,),
                       if(state.words.isEmpty)
-                      VaultEmbtyState(onStartConversation:()=>context.go('/home'))
+                      VaultEmbtyState(onStartConversation:(){
+                        /////
+                      })
                       else ...[
                         FilterTabs(
                           selected:state.filiter,
@@ -91,10 +95,9 @@ class _VaultView extends StatelessWidget {
                               word:state.visible[i],
                               strength:0,
                               onSpeak:()=>cubit.speak(state.visible[i].word),
-                              onTap:()=> context.push(
-                             '/vault/${Uri.encodeComponent(
-                              state.visible[i].word)}'
-                              )
+                              onTap: (){
+                                /////
+                              },
                              )
                           ]
                          ],
