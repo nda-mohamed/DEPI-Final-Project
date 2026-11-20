@@ -1,6 +1,7 @@
 import 'package:depi_final_project/core/app_color/app_color.dart';
 import 'package:depi_final_project/ui/home_screen/taps/vault_tap/cubits/vault_cubit.dart';
 import 'package:depi_final_project/ui/home_screen/taps/vault_tap/cubits/vault_state.dart';
+import 'package:depi_final_project/ui/home_screen/taps/vault_tap/screens/word_details_screen.dart';
 import 'package:depi_final_project/ui/home_screen/taps/vault_tap/widgets/filter_tabs.dart';
 import 'package:depi_final_project/ui/home_screen/taps/vault_tap/widgets/vault_embty_state.dart';
 import 'package:depi_final_project/ui/home_screen/taps/vault_tap/widgets/vault_state_card.dart';
@@ -95,9 +96,14 @@ class _VaultView extends StatelessWidget {
                               word:state.visible[i],
                               strength:0,
                               onSpeak:()=>cubit.speak(state.visible[i].word),
-                              onTap: (){
-                                /////
-                              },
+                              onTap: () => Navigator.push(
+                                context,MaterialPageRoute(
+                                  builder: (_) => WordDetailsScreen(
+                                    word: state.visible[i], 
+                                    onSpeak: () => cubit.speak(state.visible[i].word),
+                                    ))
+                              )
+                        
                              )
                           ]
                          ],
