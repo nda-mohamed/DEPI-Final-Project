@@ -32,16 +32,16 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'AI_Longo',
           debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
+          home: HomeNavigator(),
           // initialRoute: AppRoutes.SplashScreen.name,
           // routes: {
-          //   AppRoutes.SplashScreen.name: (context) => const SplashScreen(),
-          //   AppRoutes.OnBoardingScreen.name: (context) => const OnBoardingScreen(),
-          //   AppRoutes.LoginScreen.name: (context) => const LoginScreen(),
-          //   AppRoutes.SignupScreen.name: (context) => const SignupScreen(),
-          //   AppRoutes.ForgetPasswordScreen.name: (context) => const ForgetPasswordScreen(),
-          //   AppRoutes.VerifyScreen.name: (context) => const VerifyScreen(),
-          //   AppRoutes.HomeNavigator.name: (context) => const HomeNavigator(),
+          //   AppRoutes.SplashScreen.name: (context) =>  SplashScreen(),
+          //   AppRoutes.OnBoardingScreen.name: (context) =>  OnBoardingScreen(),
+          //   AppRoutes.LoginScreen.name: (context) =>  LoginScreen(),
+          //   AppRoutes.SignupScreen.name: (context) =>  SignupScreen(),
+          //   AppRoutes.ForgetPasswordScreen.name: (context) =>  ForgetPasswordScreen(),
+          //   AppRoutes.VerifyScreen.name: (context) =>  VerifyScreen(),
+          //   AppRoutes.HomeNavigator.name: (context) =>  HomeNavigator(),
           // }
       ),
     );
