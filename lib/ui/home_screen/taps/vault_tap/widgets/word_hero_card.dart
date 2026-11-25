@@ -46,7 +46,7 @@ class WordHeroCard extends StatelessWidget {
         SizedBox(height: 4,),
         Text(
           ////  خانه النطق
-           '/${word.pronunciation}/',
+           word.pronunciation,
            style: TextStyle(
             fontSize: 13,
             color:AppColor.white.withValues(alpha: 0.8),

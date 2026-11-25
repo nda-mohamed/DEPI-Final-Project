@@ -1,10 +1,7 @@
-
-
-
-
 import 'package:depi_final_project/core/app_color/app_color.dart';
 import 'package:depi_final_project/data/models/chat_message.dart';
 import 'package:depi_final_project/data/saved_words.dart';
+import 'package:depi_final_project/ui/home_screen/taps/vault_tap/data/word_progress.dart';
 import 'package:depi_final_project/ui/home_screen/taps/vault_tap/widgets/stat_chip.dart';
 import 'package:depi_final_project/ui/home_screen/taps/vault_tap/widgets/word_hero_card.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +9,14 @@ import 'package:flutter/material.dart';
 class WordDetailsScreen extends StatelessWidget {
   final WordDefinition word;
   final VoidCallback onSpeak;
+  final WordProgress progress;
 
-  const WordDetailsScreen({super.key, required this.word, required this.onSpeak});
+  const WordDetailsScreen({
+    super.key,
+    required this.word,
+    required this.onSpeak,
+    required this.progress,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,41 +30,55 @@ class WordDetailsScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _CircleButton(
-                  icon:Icons.chevron_left,
-                  onTap:() => Navigator.pop(context),
+                  icon: Icons.chevron_left,
+                  onTap: () => Navigator.pop(context),
                 ),
 
-              ////// remove (بيمسح الكلمات من التخزين و يرجعك)
-                   _CircleButton(
+                ////// remove (بيمسح الكلمات من التخزين و يرجعك)
+                _CircleButton(
                   icon: Icons.delete_outline,
-                  onTap: (){
+                  onTap: () {
                     SavedWords.remove(word);
+                    ProgressStore.remove(word.word);
                     Navigator.pop(context);
-                  }
+                  },
                 ),
               ],
             ),
-             ////////  بنبعت الكلمات و داله النطق 
-            SizedBox(height: 20,),
+            ////////  بنبعت الكلمات و داله النطق
+            SizedBox(height: 20),
             WordHeroCard(word: word, onSpeak: onSpeak),
 
-            SizedBox(height: 12,),
+            SizedBox(height: 12),
             Row(
               children: [
-                Expanded(child: StatChip(value: '0/5', label: 'Strength')),
-                SizedBox(width: 8,),
-                  Expanded(child: StatChip(value: 'Today', label: 'Next review')),
-                   SizedBox(width: 8,),
-                    Expanded(child: StatChip(value: '0x', label: 'seen')),
+                Expanded(
+                  child: StatChip(
+                    value: '${progress.strength}/5',
+                    label: 'Strength',
+                  ),
+                ),
+                SizedBox(width: 8),
+                Expanded(
+                  child: StatChip(
+                    value: progress.nextReviewLabel,
+                    label: 'Next review',
+                  ),
+                ),
+                SizedBox(width: 8),
+                Expanded(
+                  child: StatChip(value: '${progress.seen}x', label: 'Seen'),
+                ),
               ],
-            )
+            ),
           ],
-        )
+        ),
       ),
     );
   }
 }
-//////  تستخدم عشان نحذف و نرجع و هى خاصه بالملف ده فقط 
+
+////// تستخدم عشان نحذف و نرجع و هى خاصه بالملف ده بس 
 class _CircleButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback onTap;
@@ -70,7 +87,7 @@ class _CircleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap:onTap ,
+      onTap: onTap,
       customBorder: CircleBorder(),
       child: Container(
         width: 40,
@@ -79,11 +96,9 @@ class _CircleButton extends StatelessWidget {
           color: AppColor.surface,
           shape: BoxShape.circle,
           border: Border.all(color: AppColor.border),
-
         ),
-        child: Icon(icon,size: 20,color:AppColor.textPrimary,),
+        child: Icon(icon, size: 20, color: AppColor.textPrimary),
       ),
-
     );
   }
 }
